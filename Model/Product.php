@@ -5,36 +5,46 @@
  */
 namespace Magento\GiftCardSampleDataVenia\Model;
 
+use Magento\Catalog\Model\ConfigFactory;
+use Magento\Catalog\Model\ProductFactory;
+use Magento\CatalogSampleDataVenia\Model\Bundle\Converter;
+use Magento\CatalogSampleDataVenia\Setup\Product\Gallery;
+use Magento\Eav\Model\Config;
+use Magento\Framework\App\State;
 use Magento\Framework\Setup\SampleData\Context as SampleDataContext;
+use Magento\GiftCard\Model\Catalog\Product\Type\Giftcard;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Setup Gift Card
  */
-class Product extends \Magento\CatalogSampleData\Model\Product
+class Product extends \Magento\CatalogSampleDataVenia\Setup\Product
 {
     /**
      * @var string
      */
-    protected $productType = \Magento\GiftCard\Model\Catalog\Product\Type\Giftcard::TYPE_GIFTCARD;
+    protected $productType = Giftcard::TYPE_GIFTCARD;
 
     /**
      * Product constructor.
      * @param SampleDataContext $sampleDataContext
-     * @param \Magento\Catalog\Model\ProductFactory $productFactory
-     * @param \Magento\Catalog\Model\ConfigFactory $catalogConfig
-     * @param Product\Converter $converter
-     * @param \Magento\CatalogSampleData\Model\Product\Gallery $gallery
-     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param \Magento\Eav\Model\Config $eavConfig
+     * @param ProductFactory $productFactory
+     * @param ConfigFactory $catalogConfig
+     * @param Converter $converter
+     * @param Gallery $gallery
+     * @param StoreManagerInterface $storeManager
+     * @param Config $eavConfig
+     * @param State $appState
      */
     public function __construct(
         SampleDataContext $sampleDataContext,
-        \Magento\Catalog\Model\ProductFactory $productFactory,
-        \Magento\Catalog\Model\ConfigFactory $catalogConfig,
-        \Magento\GiftCardSampleData\Model\Product\Converter $converter,
-        \Magento\CatalogSampleData\Model\Product\Gallery $gallery,
-        \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\Eav\Model\Config $eavConfig
+        ProductFactory $productFactory,
+        ConfigFactory $catalogConfig,
+        Converter $converter,
+        Gallery $gallery,
+        StoreManagerInterface $storeManager,
+        Config $eavConfig,
+        State $appState
     ) {
         parent::__construct(
             $sampleDataContext,
@@ -43,7 +53,8 @@ class Product extends \Magento\CatalogSampleData\Model\Product
             $converter,
             $gallery,
             $storeManager,
-            $eavConfig
+            $eavConfig,
+            $appState
         );
     }
 

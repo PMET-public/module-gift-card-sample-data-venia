@@ -8,7 +8,7 @@ namespace Magento\GiftCardSampleDataVenia\Model\Product;
 /**
  * Class Converter
  */
-class Converter extends \Magento\CatalogSampleData\Model\Product\Converter
+class Converter extends \Magento\CatalogSampleDataVenia\Setup\Product\Converter
 {
     /**
      * @var \Magento\GiftCard\Api\Data\GiftcardAmountInterfaceFactory

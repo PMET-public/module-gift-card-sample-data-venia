@@ -10,7 +10,7 @@ namespace Magento\GiftCardSampleDataVenia\Setup\Patch\Data;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\CatalogSampleDataVenia\Setup\Category;
 use Magento\CatalogSampleDataVenia\Setup\Attribute;
-use Magento\CatalogSampleDataVenia\Setup\Product;
+use Magento\GiftCardSampleDataVenia\Model\Product;
 use Magento\ProductLinksSampleDataVenia\Setup\ProductLink;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\App\ObjectManager;
@@ -56,18 +56,11 @@ class InstallGiftCards implements DataPatchInterface
 
     public function apply()
     {
-        $this->storeManager->setCurrentStore(Store::DISTRO_STORE_ID);
         $this->attributeSetup->install(['Magento_GiftCardSampleDataVenia::fixtures/attributes.csv']);
-        $this->categorySetup->install(['Magento_GiftCardSampleDataVenia::fixtures/categories.csv']);
         $this->product->install(
             ['Magento_GiftCardSampleDataVenia::fixtures/products_giftcard.csv'],
             ['Magento_GiftCardSampleDataVenia::fixtures/images_giftcard.csv']
         );
-//        $this->productLinkSetup->install(
-//            ['Magento_GiftCardSampleDataVenia::fixtures/related.csv'],
-//            [],
-//            ['Magento_GiftCardSampleDataVenia::fixtures/crossell.csv']
-//        );
     }
 
     public static function getDependencies()

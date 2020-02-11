@@ -100,9 +100,12 @@ class Converter extends \Magento\CatalogSampleDataVenia\Setup\Product\Converter
 
                 $data['giftcard_amounts'][++$i] = $amount;
             } elseif ($price == 'Custom') {
+                if (($key = array_search('Custom',$prices)) !== false) {
+                    unset($prices[$key]);
+                }
                 $data['allow_open_amount'] = \Magento\GiftCard\Model\Giftcard::OPEN_AMOUNT_ENABLED;
                 $data['open_amount_min'] = min($prices);
-                $data['open_amount_max'] = null;
+                $data['open_amount_max'] = max($prices);
             }
         }
 

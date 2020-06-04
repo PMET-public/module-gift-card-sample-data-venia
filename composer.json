@@ -2,7 +2,7 @@
     "name": "magento/module-gift-card-sample-data-venia",
     "description": "N/A",
     "require": {
-        "magento/module-gift-card": "101.2.*",
+        "magento/module-gift-card": "*",
         "magento/module-catalog-sample-data-venia": "*",
         "magento/module-configurable-sample-data-venia": "*"
     },
